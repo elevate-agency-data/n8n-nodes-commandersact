@@ -1,0 +1,20 @@
+{
+  "node": "n8n-nodes-commandersact.CommandersAct",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "CommandersAct"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://commandersact.github.io/api_doc/"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://commandersact.github.io/api_doc/"
+      }
+    ]
+  }
+}
