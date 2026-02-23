@@ -543,12 +543,27 @@ export class CommandersAct implements INodeType {
           { displayName: 'End', name: 'end', type: 'string', default: '' },
           { displayName: 'Fields[template]', name: 'Fields%5Btemplate%5D', type: 'string', default: '' },
 					{ displayName: 'Filter', name: 'filter', type: 'json', default: '' },
+					{ displayName: 'Filter[action]', name: 'filter%5Baction%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[alert]', name: 'filter%5Balert%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[archived]', name: 'filter%5Barchived%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[begin_date]', name: 'filter%5Bbegin_date%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[category]', name: 'filter%5Bcategory%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[causer_id]', name: 'filter%5Bcauser_id%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[created]', name: 'filter%5Bcreated%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[enable]', name: 'filter%5Benable%5D', type: 'boolean', default: true },
 					{ displayName: 'Filter[end_date]', name: 'filter%5Bend_date%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[environment]', name: 'filter%5Benvironment%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[from]', name: 'filter%5Bfrom%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[label]', name: 'filter%5Blabel%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[model_id]', name: 'filter%5Bmodel_id%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[name]', name: 'filter%5Bname%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[public-ID]', name: 'filter%5Bpublic-id%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[rangeType]', name: 'filter%5BrangeType%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[search]', name: 'filter%5Bsearch%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[segment_id]', name: 'filter%5Bsegment_id%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[status]', name: 'filter%5Bstatus%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[subject_id]', name: 'filter%5Bsubject_id%5D', type: 'string', default: '' },
+					{ displayName: 'Filter[subject_type]', name: 'filter%5Bsubject_type%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[sup_filters][device][]', name: 'filter%5Bsup_filters%5D%5Bdevice%5D%5B%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[sup_filters][location][]', name: 'filter%5Bsup_filters%5D%5Blocation%5D%5B%5D', type: 'string', default: '' },
 					{ displayName: 'Filter[to]', name: 'filter%5Bto%5D', type: 'string', default: '' },
@@ -556,9 +571,11 @@ export class CommandersAct implements INodeType {
 					{ displayName: 'Granularity', name: 'granularity', type: 'string', default: '' },
           { displayName: 'Include', name: 'include', type: 'string', default: '' },
 					{ displayName: 'Page', name: 'page', type: 'json', default: '' },
+					{ displayName: 'Page[number]', name: 'page%5Bnumber%5D', type: 'string', default: '' },
+					{ displayName: 'Page[size]', name: 'page%5Bsize%5D', type: 'string', default: '' },
 					{ displayName: 'Sort', name: 'sort', type: 'json', default: '' },
-					{ displayName: 'Sort for Event Enrichments', name: 'sort', type: 'json', default: '' },	
-					{ displayName: 'Sort for Live Report Builder', name: 'sort', type: 'string', default: '' },	
+					{ displayName: 'Sort[by]', name: 'sort%5Bby%5D', type: 'string', default: '' },
+					{ displayName: 'Sort[desc]', name: 'sort%5Bdesc%5D', type: 'boolean', default: true },
 					{	displayName: 'Source', name: 'source', type: 'string', default: '' },					
           { displayName: 'Start', name: 'start', type: 'string', default: '' },  				
           { displayName: 'Token', name: 'token', type: 'string', default: '', typeOptions:{password:true} },  
@@ -622,7 +639,7 @@ export class CommandersAct implements INodeType {
 
 				const queryParams = new URLSearchParams();
         Object.entries(queryParameters).forEach(([key, value]) => {
-          if (value) queryParams.append(key, String(value));
+          if (value) queryParams.append(decodeURIComponent(key), String(value));
         });
 
         const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
